@@ -1,11 +1,10 @@
-import logo from './logo.svg';
 import './App.css';
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import ProductsContainer from './Components/ProductsContainer'
 import ProductsContext from './Components/ProductsContext'
 
 // make api 
-// Products: http://3.21.164.220/products
+// Products: http://3.21.164.220/products/list
 // Get all reviews: http://3.21.164.220/reviews/?product_id=1/list
 //             product_id	integer	Specifies the product for which to retrieve reviews.
 //             page	      integer	Selects the page of results to return. Default 1.
@@ -13,24 +12,36 @@ import ProductsContext from './Components/ProductsContext'
 //             sort	      text	  Changes the sort order of reviews to be based on "newest", "helpful", or "relevant"
 // Post a new review: http://3.21.164.220/reviews/?product_id=1
 
-let url = 'http://3.21.164.220/'
-
-
-async function fetchProducts() {
-  const products = await fetch( `${url}products` )
-                      .then( res => res.json())
-  return await products
-}
+//let url = 'http://3.21.164.220/'
+let url = 'http://18.224.200.47/'
 
 
 function App() {
-  const [ products, setProducts] = useState(fetchProducts())
-  console.log('products', products)
-  
-  //let contextObject = { products:products }
+  const [ products, setProducts] = useState(["Loading"])
+  const [ updateProducts, setUpdateProducts ] = useState(false)
+
+
+  useEffect(async ()=>{
+    async function fetchProducts() {
+      await fetch( `${url}products/list` )
+            .then( (res) => {
+              return res.json() 
+            })
+            .then( json => {
+              setProducts(json)
+            })
+    }
+
+    fetchProducts()
+  }, [updateProducts])
+
+  if(!updateProducts){
+    setUpdateProducts(true)
+  }
 
   return (
     <div className="App">
+      <h1>गैल्वेनाइज स्टोर</h1>
       <ProductsContext.Provider value={ products }>
         <ProductsContainer/>
       </ProductsContext.Provider>

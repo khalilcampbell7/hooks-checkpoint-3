@@ -1,5 +1,10 @@
 .App {
   text-align: center;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  width: 60vw;
+  background-color: #DE4e4e;
 }
 
 .App-logo {
@@ -36,3 +41,82 @@
     transform: rotate(360deg);
   }
 }
+
+.productCard {
+  border: 1px solid #fe9345;
+  margin: 1em;
+  background-color: #EEC219;
+  border-radius: 1em;
+  box-shadow: 10px 10px 8px -5px rgba(254,147,69,0.75);
+  -webkit-box-shadow: 10px 10px 8px -5px rgba(254,147,69,0.75);
+  -moz-box-shadow: 10px 10px 8px -5px rgba(254,147,69,0.75);
+}
+
+.productCard:hover{
+  background: linear-gradient(90deg, rgba(254,147,69,1) 0%, rgba(238,194,25,1) 35%, rgba(222,78,78,1) 100%);
+}
+
+strike {
+  color: red;
+}
+
+b {
+  color: green;
+}
+
+img {
+  border-radius: 10%;
+  border: 1px solid #fe9345;
+}
+
+h1 {
+  color: #EEc219;
+  font-size: 5em;
+  -webkit-text-stroke: 2px #fe9345;
+}
+
+/*
+.popupContainer{
+  display: flex;
+  flex-flow: row;
+  justify-content: center;
+}*/
+
+.popupContainer{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  align-content: center;
+  justify-content: space-evenly;
+}
+
+
+.left{
+  text-align: left;
+}
+
+.right{
+  text-align: right;
+}
+
+input {
+  border: 1px solid #fe9345;
+  width: 10em;
+  height: 3em;
+  border-radius: 1em;
+  background: rgb(254,147,69);
+  background: linear-gradient(90deg, rgba(254,147,69,1) 0%, rgba(238,194,25,1) 35%, rgba(222,78,78,1) 100%);
+}
+
+input:hover{
+  border: 1px solid #fe9345;
+  width: 10em;
+  height: 3em;
+  border-radius: 1em;
+  background: rgb(254,147,69);
+  background: linear-gradient(90deg, rgba(254,147,69,1) 0%, rgba(238,194,25,1) 35%, rgba(222,78,78,1) 100%);
+  box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+-webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+-moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+}
+
