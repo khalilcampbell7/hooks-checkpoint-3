@@ -7,43 +7,32 @@ function ProductsContainer(){
     const [ imgURL, setImgURL ] = useState("");
     console.log('prod cont, products', products)
 
+
     const handleClick=(e)=>{
         setImgURL("");
-        if(selectedItem !== Number(e.target.id))
-        {
-            setSelectedItem(Number(e.target.id))
-        } else {
-            setSelectedItem(-1)
-        }
-    
+        if(selectedItem !== Number(e.target.id)){
+            setSelectedItem(Number(e.target.id))} 
+        else {
+            setSelectedItem(-1)}}
 
-    }
 
     useEffect(async ()=>{
-
-        async function fetchImage() {
-            if(selectedItem !== -1)
-            {
+        async function fetchImage(){
+            if(selectedItem !== -1){
                 let url = `http://18.224.200.47/products/${products[selectedItem].id}/styles/`
                 console.log('inside fetchImage', url)
                 await fetch( url )
                     .then( res => res.json() )
                     .then( json => {
-                        if(json.results[0].photos[0].thumbnail_url === null)
-                        {
-                            setImgURL("https://media.giphy.com/media/LXONhtCmN32YU/giphy.gif");
-                        } else {
-                            setImgURL(json.results[0].photos[0].thumbnail_url)
-                        }
-                    })
+                        if(json.results[0].photos[0].thumbnail_url === null){
+                            setImgURL("https://media.giphy.com/media/LXONhtCmN32YU/giphy.gif");} 
+                        else {
+                            setImgURL(json.results[0].photos[0].thumbnail_url)}})
             } else {
-                setImgURL("");
-            }
-        }
+                setImgURL("");}}
 
-        
+
         fetchImage()
-        // fetchProducts()
       }, [selectedItem])
 
 
@@ -81,7 +70,7 @@ function ProductsContainer(){
             <p id={index}>{item.description}</p>
             {conditionalHTML(Number(index))}
         </div>
-    )})//products.map( product => <h1>{product}</h1>)
+    )})
     
     return elementArray
 }

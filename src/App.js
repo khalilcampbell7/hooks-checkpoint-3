@@ -33,11 +33,8 @@ function App() {
     }
 
     fetchProducts()
-  }, [updateProducts])
+  }, [])
 
-  if(!updateProducts){
-    setUpdateProducts(true)
-  }
 
   return (
     <div className="App">
